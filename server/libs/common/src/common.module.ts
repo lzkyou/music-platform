@@ -4,16 +4,12 @@ import { CommonService } from './common.service';
 
 @Global()
 @Module({
-  imports:[
-    JwtModule.registerAsync({
-      useFactory(){
-        return {
-          secret: '201920140083liangzekun'
-        }
-      }
-    })
+  imports: [
+    JwtModule.register({
+      secret: '201920140083lzk'
+    }),
   ],
   providers: [CommonService],
   exports: [CommonService, JwtModule],
 })
-export class CommonModule {}
+export class CommonModule { }
