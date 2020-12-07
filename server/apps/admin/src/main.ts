@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { SwaggerModule, DocumentBuilder, ApiBearerAuth } from '@nestjs/swagger';
 import { AdminModule } from './admin.module';
 
 async function bootstrap() {
@@ -11,9 +11,11 @@ async function bootstrap() {
   })
   const options = new DocumentBuilder()
     .setTitle('后台管理API')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api-docs', app, document);
+  
 
   const port = 3002
   await app.listen(port);

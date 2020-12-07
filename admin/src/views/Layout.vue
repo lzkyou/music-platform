@@ -56,7 +56,18 @@ export default {
           },
         ],
       },
+      userModel: {}
     };
+  },
+  methods: {
+    async getUser() {
+      const res = await this.$http.get("auth/user");
+      this.userModel = res.data.username
+      console.log(this.userModel);
+    },
+  },
+  created() {
+    this.getUser()
   },
 };
 </script>

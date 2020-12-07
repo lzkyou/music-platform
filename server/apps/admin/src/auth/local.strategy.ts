@@ -20,10 +20,10 @@ export class LocalStrategy extends PassportStrategy(Strategy){
     // console.log(user);
     
     if(!user){
-      throw new BadRequestException('用户名和密码错误！')
+      throw new BadRequestException('用户名或密码错误！')
     }
     if(!compareSync(password, user.password)){
-      throw new BadRequestException('用户名和密码错误！')
+      throw new BadRequestException('用户名或密码错误！')
     }
     return user
   }

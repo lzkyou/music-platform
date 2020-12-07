@@ -1,5 +1,6 @@
 import { Singer } from '@libs/db/models/singer.model';
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
 import { Crud } from 'nestjs-mongoose-crud';
 import { InjectModel } from 'nestjs-typegoose';
@@ -8,6 +9,7 @@ import { InjectModel } from 'nestjs-typegoose';
   model: Singer
 })
 @ApiTags('歌手管理')
+@UseGuards(AuthGuard('jwt-api'))
 @Controller('singers')
 export class SingersController {
   constructor(@InjectModel(Singer) private readonly model){}

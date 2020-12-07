@@ -1,6 +1,7 @@
 import { Album } from '@libs/db/models/album.model';
 import { Song } from '@libs/db/models/song.model';
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { Crud } from 'nestjs-mongoose-crud';
@@ -10,6 +11,7 @@ import { InjectModel } from 'nestjs-typegoose';
   model: Song
 })
 @ApiTags('歌曲管理')
+@UseGuards(AuthGuard('jwt-api'))
 @Controller('songs')
 export class SongsController {
   constructor(
