@@ -8,6 +8,7 @@ import { AlbumsModule } from './albums/albums.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { SongsModule } from './songs/songs.module';
 import { AuthModule } from './auth/auth.module';
+import { AdsModule } from './ads/ads.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { AuthModule } from './auth/auth.module';
     SingersModule,
     AlbumsModule,
     SongsModule,
-    AuthModule
+    AuthModule,
+    AdsModule
   ],
   controllers: [AdminController],
   providers: [AdminService],

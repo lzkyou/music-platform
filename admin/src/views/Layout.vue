@@ -52,7 +52,10 @@ export default {
           },
           {
             title: "运营管理",
-            items: [{ title: "用户管理", path: "/users/list" }],
+            items: [
+              { title: "用户管理", path: "/users/list" },
+              { title: "广告管理", path: "/ads/list" },
+            ],
           },
         ],
       },
