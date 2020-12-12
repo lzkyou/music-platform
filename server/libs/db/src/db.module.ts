@@ -5,9 +5,17 @@ import { Ads } from './models/ads.model';
 import { Album } from './models/album.model';
 import { Singer } from './models/singer.model';
 import { Song } from './models/song.model';
+import { SongList } from './models/songlist.model';
 import { User } from './models/user.model';
 
-const models = TypegooseModule.forFeature([User,Singer,Album,Song,Ads])
+const models = TypegooseModule.forFeature([
+  User,
+  Singer,
+  Album,
+  Song,
+  Ads,
+  SongList
+])
 
 @Global()
 @Module({

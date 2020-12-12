@@ -48,6 +48,7 @@ export default {
               { title: "歌手管理", path: "/singers/list" },
               { title: "专辑管理", path: "/albums/list" },
               { title: "歌曲管理", path: "/songs/list" },
+              { title: "歌单管理", path: "/songlist/list" },
             ],
           },
           {

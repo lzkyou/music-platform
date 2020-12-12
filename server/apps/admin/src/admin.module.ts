@@ -9,6 +9,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { SongsModule } from './songs/songs.module';
 import { AuthModule } from './auth/auth.module';
 import { AdsModule } from './ads/ads.module';
+import { SonglistModule } from './songlist/songlist.module';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { AdsModule } from './ads/ads.module';
     AlbumsModule,
     SongsModule,
     AuthModule,
-    AdsModule
+    AdsModule,
+    SonglistModule
   ],
   controllers: [AdminController],
   providers: [AdminService],

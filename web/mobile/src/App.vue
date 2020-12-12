@@ -9,6 +9,8 @@
 
 <style>
 body{
-  background-color: #f7f7f7;
+  max-width: 100vw;
+  background-color: #f9f9f9;
+  font-family: '微软雅黑' !important;
 }
 </style>

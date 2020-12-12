@@ -11,11 +11,11 @@ import { InjectModel } from 'nestjs-typegoose';
   model: Song
 })
 @ApiTags('歌曲管理')
-@UseGuards(AuthGuard('jwt-api'))
+// @UseGuards(AuthGuard('jwt-api'))
 @Controller('songs')
 export class SongsController {
   constructor(
-    @InjectModel(Song) private readonly model,
+    @InjectModel(Song) private readonly model: ReturnModelType<typeof Song>,
     @InjectModel(Album) private readonly albumModel: ReturnModelType<typeof Album>
   ) { }
 
@@ -35,7 +35,7 @@ export class SongsController {
       column: [
         { prop: "name", label: "歌曲名称", row: true, span: 24, sortable: true, search: true, reg: true },
         { prop: "belong", label: "所属专辑", row: true, type: "select", dicData: albums },
-        { prop: "song", label: "歌曲文件", row: true, type: "upload", limit: 1, dataType: 'string', action: 'upload' },
+        { prop: "song", label: "歌曲文件", row: true, type: "upload", limit: 1, dataType: 'string', listType:'text', action: 'upload' },
         { prop: "video", label: "视频文件", row: true, type: "upload", limit: 1, dataType: 'string', action: 'upload' },
       ],
     }

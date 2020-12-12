@@ -1,7 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { modelOptions, prop, Ref } from "@typegoose/typegoose";
-import { Singer } from "./singer.model";
-import { Song } from "./song.model";
 
 @modelOptions({
   schemaOptions:{
