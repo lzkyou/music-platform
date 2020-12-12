@@ -13,6 +13,20 @@
       "unicode_decimal": 58911
     },
     {
+      "icon_id": "1132455",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "1167280",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
       "icon_id": "1188467",
       "name": "消息",
       "font_class": "xiaoxi",
@@ -23,8 +37,8 @@
       "icon_id": "1395870",
       "name": "黑名单",
       "font_class": "heimingdan",
-      "unicode": "e637",
-      "unicode_decimal": 58935
+      "unicode": "e638",
+      "unicode_decimal": 58936
     },
     {
       "icon_id": "3094868",
@@ -135,8 +149,8 @@
       "icon_id": "12975016",
       "name": "会员",
       "font_class": "huiyuan",
-      "unicode": "e638",
-      "unicode_decimal": 58936
+      "unicode": "e639",
+      "unicode_decimal": 58937
     },
     {
       "icon_id": "14191047",

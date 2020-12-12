@@ -21,12 +21,29 @@
         </div>
       </div>
     </div>
+    <div class="playlist-wrap">
+      <div class="playlist-title">
+        <van-icon class-prefix="icon" name="1_music94"></van-icon>
+        <span>全部播放</span>
+      </div>
+      <div class="playlist">
+        <div class="playlist-item">
+          <div class="p-item-index">1</div>
+          <div class="p-item-song">
+            <div class="p-i-song-title">1</div>
+            <div class="p-i-song-singer">1</div>
+          </div>
+          <van-icon class-prefix="icon" name="zhibo"></van-icon>
+          <van-icon class-prefix="icon" name="shipin"></van-icon>
+        </div>
+      </div>
+    </div>
+    <!-- <aplayer class="player" music="{}" /> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: "SongSheet",
   props: {
     id: String,
   },
@@ -60,7 +77,13 @@ export default {
 </script>
 
 <style>
-.desc-wrap{
+.player {
+  position: fixed !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.desc-wrap {
   height: 100vh;
 }
 .van-nav-bar {
@@ -76,14 +99,14 @@ export default {
   position: relative;
 }
 .desc-bg {
-  position: absolute;
   width: 100vw;
   height: 250px;
-  filter: blur(40px);
+  filter: blur(45px);
   border-radius: 10%;
 }
 .desc .desc-stuff {
   position: absolute;
+  top: 0;
   display: flex;
   box-sizing: border-box;
   width: 100vw;
@@ -112,5 +135,16 @@ export default {
 .desc-context span {
   color: #cecece;
   font-size: 13px;
+}
+.playlist-wrap{
+  background-color: #fff;
+  padding: .5rem;
+}
+.playlist-wrap .icon-1_music94{
+  font-size: 1.5rem;
+}
+.playlist-title{
+  display: flex;
+  align-items: center;
 }
 </style>
