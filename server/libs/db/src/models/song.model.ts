@@ -1,6 +1,12 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { prop, Ref } from "@typegoose/typegoose";
+import { modelOptions, prop, Ref } from "@typegoose/typegoose";
 import { Album } from "./album.model";
+
+@modelOptions({
+  schemaOptions:{
+    toJSON: {virtuals: true}
+  }
+})
 
 export class Song{
   
@@ -16,6 +22,7 @@ export class Song{
   @prop()
   video: string
 
-  @prop({ref: 'album'})
+  @prop({ref: 'Album'})
   belong: Ref<Album>
+
 }

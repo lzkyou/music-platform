@@ -1,8 +1,10 @@
 import { Global, Module } from '@nestjs/common';
 import { TypegooseModule } from 'nestjs-typegoose';
 import { DbService } from './db.service';
+import { Action } from './models/action.model';
 import { Ads } from './models/ads.model';
 import { Album } from './models/album.model';
+import { Post } from './models/post.model';
 import { Singer } from './models/singer.model';
 import { Song } from './models/song.model';
 import { SongList } from './models/songlist.model';
@@ -14,7 +16,9 @@ const models = TypegooseModule.forFeature([
   Album,
   Song,
   Ads,
-  SongList
+  SongList,
+  Post,
+  Action
 ])
 
 @Global()

@@ -25,7 +25,7 @@
     <!-- 主页主体 -->
     <div class="recommend">
       <home-title :title="'E·臣 | 精选歌单'"></home-title>
-      <div class="song-sheet">
+      <div class="song-sheet flex m-2 flex-nw">
         <router-link
           tag="a"
           :to="`songsheets/desc/${item._id}`"
@@ -33,21 +33,21 @@
           :key="item.index"
         >
           <img :src="item.cover" />
-          <span>{{ item.name }}</span>
+          <span class="w-100 text-dark text-left fs-sm">{{ item.name }}</span>
         </router-link>
       </div>
     </div>
     <div class="album">
       <home-title :title="'E·臣 | 精选专辑'"></home-title>
-      <div class="album-item">
+      <div class="album-item flex m-2 flex-w jc-around">
         <router-link
           tag="a"
           :to="`albums/desc/${item._id}`"
           v-for="item in albums"
           :key="item.index"
         >
-          <img :src="item.cover" />
-          <span>{{ item.name }}</span>
+          <img class="w-100 shadow" :src="item.cover" />
+          <span class="text-dark">{{ item.name }}</span>
         </router-link>
       </div>
     </div>
@@ -90,7 +90,7 @@ export default {
     async fetchAlbums(){
       const res = await this.$http.get("albums");
       this.albums = res.data.data;
-      console.log(this.albums);
+      // console.log(this.albums);
     }
   },
   created() {
@@ -120,9 +120,6 @@ export default {
   background-color: transparent !important;
 }
 .song-sheet {
-  display: flex;
-  margin: 1rem;
-  flex-wrap: nowrap !important;
   overflow: hidden;
   overflow-x: auto;
 }
@@ -130,7 +127,6 @@ export default {
   display: none;
 }
 .song-sheet a {
-  display: block;
   padding-right: 0.4375rem;
 }
 .song-sheet a img {
@@ -141,16 +137,6 @@ export default {
 }
 .song-sheet a span {
   display: inline-block;
-  color: #333;
-  width: 100%;
-  text-align: left;
-  font-size: 0.8125rem;
-}
-.album-item{
-  display: flex;
-  margin: 1rem;
-  flex-wrap: wrap;
-  justify-content: space-around;
 }
 .album-item a{
   display: block;
@@ -158,12 +144,9 @@ export default {
   text-align: center;
 }
 .album-item a img{
-  width: 100%;
   border-radius: 0.3125rem;
-  box-shadow: 1px 1px 5px #c5c5c5;
 }
 .album-item a span {
-  color: #333;
   line-height: 1.8rem;
   font-size: 0.9375rem;
 }

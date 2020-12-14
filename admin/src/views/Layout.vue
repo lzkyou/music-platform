@@ -56,6 +56,7 @@ export default {
             items: [
               { title: "用户管理", path: "/users/list" },
               { title: "广告管理", path: "/ads/list" },
+              { title: "动态管理", path: "/posts/list" },
             ],
           },
         ],

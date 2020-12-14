@@ -17,10 +17,10 @@ export default new Router({
       name: 'home',
       component: TabBar,
       children: [
-        { path: '/', component: Home, },
-        { path: '/discover', component: Discover },
-        { path: '/chat', component: Chat },
-        { path: '/profile', component: Profile }
+        { path: '/', name: 'homeContent', component: Home, },
+        { path: '/discover', name: 'Discover', component: Discover },
+        { path: '/chat', name: 'Chat', component: Chat },
+        { path: '/profile', name: 'Profile', component: Profile }
       ]
     },
     { path: '/:res/desc/:id', name: 'desc', component: Desc, props: true }

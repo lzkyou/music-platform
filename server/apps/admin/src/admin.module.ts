@@ -10,6 +10,7 @@ import { SongsModule } from './songs/songs.module';
 import { AuthModule } from './auth/auth.module';
 import { AdsModule } from './ads/ads.module';
 import { SonglistModule } from './songlist/songlist.module';
+import { PostsModule } from './posts/posts.module';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { SonglistModule } from './songlist/songlist.module';
     SongsModule,
     AuthModule,
     AdsModule,
-    SonglistModule
+    SonglistModule,
+    PostsModule
   ],
   controllers: [AdminController],
   providers: [AdminService],
