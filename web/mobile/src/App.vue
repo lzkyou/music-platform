@@ -17,10 +17,17 @@ export default {
       // isAlive: true,
     };
   },
+  created() {
+    this.$store.state.user = JSON.parse(localStorage.getItem('loginUser'))
+  },
 };
 </script>
 
 <style>
+#app {
+  width: 100vw;
+  overflow: hidden;
+}
 .player {
   position: fixed !important;
   bottom: 50px;

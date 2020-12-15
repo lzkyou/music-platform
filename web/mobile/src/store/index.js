@@ -8,6 +8,9 @@ const store = new Vuex.Store({
     artist: '未在播放',
     src: ' ',
     pic: ' ',
+    usersNow: ' ',
+    historyChat: [],
+    user: {}
   }
 })
 

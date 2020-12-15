@@ -9,7 +9,9 @@ import { hashSync } from "bcryptjs";
 })
 export class User{
   @ApiProperty({example: '用户名'})
-  @prop()
+  @prop({
+    unique: true
+  })
   username: string
 
   @ApiProperty({example: '密码'})
@@ -25,14 +27,50 @@ export class User{
   password: string
 
   @ApiProperty({example: '昵称'})
-  @prop()
+  @prop({
+    get(val){
+      return val
+    },
+    set(val){
+      if(val===''){
+        return '用户'
+      }
+      else{
+        return val
+      }
+    }
+  })
   nickname: string
 
   @ApiProperty({example: '用户权限'})
-  @prop()
+  @prop({
+    get(val){
+      return val
+    },
+    set(val){
+      if(val===''){
+        return '用户'
+      }
+      else{
+        return val
+      }
+    }
+  })
   permission: string
 
   @ApiProperty({example: '头像'})
-  @prop()
+  @prop({
+    get(val){
+      return val
+    },
+    set(val){
+      if(val===''){
+        return 'http://localhost:3002/uploads/5323d1e75c122adc10235baad323107f'
+      }
+      else{
+        return val
+      }
+    }
+  })
   topic: string
 }

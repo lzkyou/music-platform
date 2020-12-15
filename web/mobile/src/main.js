@@ -4,9 +4,9 @@ import router from './router'
 import store from './store'
 
 import './plugins/vant.js'
-import axios from 'axios'
 import Aplayer from 'vue-aplayer'
 import VueSocketIO from 'vue-socket.io'
+import http from './http'
 
 import '@/assets/scss/style.scss'
 import '@/assets/icon/iconfont.css'
@@ -14,19 +14,19 @@ import '@/assets/icon/iconfont.css'
 Vue.config.productionTip = false
 
 //axios实例
-Vue.prototype.$http = axios.create({
-  baseURL: 'http://localhost:3001/'
-})
+Vue.prototype.$http = http
+
 
 //全局事件总线
 Vue.prototype.$bus = new Vue();
 
 //全局组件
+Aplayer.disableVersionBadge = true
 Vue.component('aplayer', Aplayer)
 
 //Socket.io
 Vue.use(new VueSocketIO({
-  debug: true,
+  // debug: true,
   connection: 'http://localhost:3003'
 }))
 

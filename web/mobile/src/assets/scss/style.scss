@@ -14,6 +14,10 @@ a {
   display: block;
 }
 
+.bd-none{
+  border: none;
+}
+
 .shadow {
   box-shadow: 1px 1px 5px #c5c5c5;
 }
@@ -74,6 +78,10 @@ a {
 
   .bg-#{$colorKey} {
     background-color: $color;
+  }
+
+  .bd-#{$colorKey} {
+    border: 1px solid $color;
   }
 }
 

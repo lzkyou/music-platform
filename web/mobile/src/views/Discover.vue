@@ -16,7 +16,10 @@
           </div>
         </div>
         <van-divider class="my-0">随心推荐</van-divider>
-        <div @click="play(likelySong)" class="flex pb-1 px-2 lh-4 ai-center bd-bottom">
+        <div
+          @click="play(likelySong)"
+          class="flex pb-1 px-2 lh-4 ai-center bd-bottom"
+        >
           <div class="p-item-index grey text-center">
             <van-icon
               class="primary fs-xxxl pr-2"
@@ -77,8 +80,17 @@
       </van-tab>
       <van-tab :title="'曲目'">
         <van-index-bar class="mt-2" :sticky="false">
-          <van-index-anchor v-for="album in albums" :key="album.index" :index="album.name">
-            <van-cell @click="play(album,song)" v-for="song in album.songs" :key="song.index" :title="song.name" />
+          <van-index-anchor
+            v-for="album in albums"
+            :key="album.index"
+            :index="album.name"
+          >
+            <van-cell
+              @click="playlist(album, song)"
+              v-for="song in album.songs"
+              :key="song.index"
+              :title="song.name"
+            />
           </van-index-anchor>
         </van-index-bar>
       </van-tab>
@@ -118,15 +130,21 @@ export default {
           query: { populate: "songs" },
         },
       });
-      this.albums=res.data.data
+      this.albums = res.data.data;
       // console.log(this.albums);
     },
-    play(album,desc) {
+    play(desc) {
       this.$store.state.src = desc.song;
       this.$store.state.title = desc.name;
       this.$store.state.artist = "陈奕迅";
-      this.$store.state.pic = album.cover;
+      this.$store.state.pic = desc.belongTo[0].cover;
     },
+    playlist(album,song){
+      this.$store.state.src = song.song;
+      this.$store.state.title = song.name;
+      this.$store.state.artist = "陈奕迅";
+      this.$store.state.pic = album.cover;
+    }
   },
   created() {
     this.fetchSinger();
@@ -172,7 +190,7 @@ export default {
 .like i {
   width: 50%;
 }
-.van-index-bar__sidebar{
+.van-index-bar__sidebar {
   display: none !important;
 }
 </style>

@@ -9,9 +9,10 @@ import { SongsModule } from './songs/songs.module';
 import { SingersModule } from './singers/singers.module';
 import { PostsModule } from './posts/posts.module';
 import { EventsGateway } from './events.gateway';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [DbModule,AdsModule, SonglistModule, AlbumsModule, SongsModule, SingersModule, PostsModule],
+  imports: [DbModule,AdsModule, SonglistModule, AlbumsModule, SongsModule, SingersModule, PostsModule, AuthModule],
   controllers: [AppController],
   providers: [AppService, EventsGateway],
 })

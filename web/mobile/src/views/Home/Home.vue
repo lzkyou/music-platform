@@ -106,7 +106,7 @@ export default {
 
 <style>
 .home{
-  padding-bottom: 50px;
+  padding-bottom: 110px;
 }
 .home-swipe img {
   height: 30vh;
