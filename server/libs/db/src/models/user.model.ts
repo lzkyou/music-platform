@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { modelOptions, prop } from "@typegoose/typegoose";
+import { modelOptions, prop, Ref } from "@typegoose/typegoose";
 import { hashSync } from "bcryptjs";
+import { Post } from "./post.model";
 
 @modelOptions({
   schemaOptions:{
@@ -73,4 +74,5 @@ export class User{
     }
   })
   topic: string
+
 }

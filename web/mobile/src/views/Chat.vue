@@ -17,13 +17,12 @@
       placeholder="输入信息"
     >
       <template #button>
-        <van-button size="small" type="primary" @click="send()"
-          >发送</van-button
-        >
+        <van-button size="small" type="primary" @click="send()">发送</van-button>
       </template>
     </van-field>
     <div class="room mt-6 p-2">
       <div class="chat" v-for="item in msgs" :key="item.index">
+        <div class="time text-center grey fs-sm">{{item.time}}</div>
         <div class="msg-left" v-if="item.sender != 'me'">
           <div class="message bg-white px-2 py-1 m-2">{{ item.msg }}</div>
         </div>
@@ -63,9 +62,10 @@ export default {
           positon: "bottom",
         });
       } else {
-        this.$socket.emit("msgToServer", this.sendMsg);
-        console.log(this.msgs);
-        this.msgs.push({ sender: "me", msg: this.sendMsg });
+        let time = this.dayjs().format('HH:mm:ss')
+        this.$socket.emit("msgToServer", {msg: this.sendMsg, time: time});
+        // console.log(this.msgs);
+        this.msgs.push({ sender: "me", msg: this.sendMsg, time: time });
         this.sendMsg = "";
       }
     },

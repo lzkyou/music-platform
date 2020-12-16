@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import TabBar from './views/TabBar.vue'
+import TabBar from './components//common/TabBar.vue'
 import Home from './views/Home/Home.vue'
 import Discover from './views/Discover.vue'
 import Chat from './views/Chat.vue'
 import Profile from './views/Profile.vue'
 
-import Desc from './components/Desc.vue'
+import Desc from './components/content/Desc.vue'
 
 Vue.use(Router)
 

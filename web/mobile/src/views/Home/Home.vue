@@ -1,12 +1,7 @@
 <template>
   <div class="home">
     <!-- 主页头部 -->
-    <van-search
-      shape="round"
-      placeholder="搜索"
-      input-align="center"
-      maxlength="28"
-    />
+    <search-bar></search-bar>
     <van-swipe class="home-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item v-for="(image, index) in banner" :key="index">
         <img :src="image" />
@@ -55,8 +50,15 @@
 </template>
 
 <script>
+import SearchBar from "@/components/common/SearchBar.vue";
+
 import HomeTitle from "./Comps/HomeTitle.vue";
+
 export default {
+  components: {
+    SearchBar,
+    HomeTitle,
+  },
   data() {
     return {
       banner: {},
@@ -98,9 +100,7 @@ export default {
     this.fetchSongSheets();
     this.fetchAlbums();
   },
-  components: {
-    HomeTitle,
-  },
+  
 };
 </script>
 

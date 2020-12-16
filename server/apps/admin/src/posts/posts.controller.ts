@@ -23,7 +23,7 @@ export class PostsController {
       stripe: true,
       searchMenuSpan: 8,
       column: [
-        { prop: "user", label: "发布用户", row: true, span: 24, sortable: true, search: true, reg: true },
+        { prop: "poster", label: "发布用户", row: true, span: 24, sortable: true, search: true, reg: true },
         { prop: "content", label: "动态内容", row: true, type: "textarea", },
         { prop: "imgs", label: "动态图片", row: true, type: "upload", multiple: true, accept:"image/png, image/jpeg, image/webp", action: 'upload' },
       ],

@@ -20,9 +20,9 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   @SubscribeMessage('msgToServer')
-  message(client: Socket, msg: string) {
+  message(client: Socket, obj: any) {
     //服务端发送广播事件，客户端sockets类中直接监听'msgToClient'可获取消息
-    client.broadcast.emit('msgToClient', {sender: 'other', msg: msg})
+    client.broadcast.emit('msgToClient', {sender: 'other', msg: obj.msg, time: obj.time})
   }
 
   //状态监听

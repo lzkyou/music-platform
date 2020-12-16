@@ -10,7 +10,7 @@ import { User } from "./user.model";
 export class Post{
   @ApiProperty({example:'用户id'})
   @prop({ref: 'User'})
-  user: Ref<User>;
+  poster: Ref<User>;
 
   @ApiProperty({example:'动态内容'})
   @prop()

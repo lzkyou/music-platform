@@ -13,4 +13,17 @@ http.interceptors.request.use(config => {
   return Promise.reject(err)
 })
 
-export default http
+const upload = axios.create({
+  baseURL: 'http://localhost:3002/'
+})
+
+upload.interceptors.request.use(config => {
+  if (localStorage.token) {
+    config.headers.post['Content-Type'] = 'multipart/form-data'
+  }
+  return config
+}, err => {
+  return Promise.reject(err)
+})
+
+export {http,upload}

@@ -6,16 +6,23 @@ import store from './store'
 import './plugins/vant.js'
 import Aplayer from 'vue-aplayer'
 import VueSocketIO from 'vue-socket.io'
-import http from './http'
+import {http, upload} from './http'
 
 import '@/assets/scss/style.scss'
 import '@/assets/icon/iconfont.css'
+
+import dayjs from 'dayjs'
+var utc = require('dayjs/plugin/utc') // dependent on utc plugin
+var timezone = require('dayjs/plugin/timezone')
+dayjs.extend(utc)
+dayjs.extend(timezone)
+Vue.prototype.dayjs = dayjs
 
 Vue.config.productionTip = false
 
 //axios实例
 Vue.prototype.$http = http
-
+Vue.prototype.$upload = upload
 
 //全局事件总线
 Vue.prototype.$bus = new Vue();
