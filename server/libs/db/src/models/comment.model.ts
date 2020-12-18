@@ -8,7 +8,7 @@ import { User } from "./user.model";
     timestamps: true
   }
 })
-export class Action {
+export class Comment {
   @prop({ ref: 'User' })
   user: Ref<User>
 
@@ -18,6 +18,6 @@ export class Action {
   @prop({ refPath: 'type' })
   object: Ref<Post | Song>
 
-  @prop({ enum: ['like', 'favor'] })
-  name: string
+  @prop({})
+  content: string
 }

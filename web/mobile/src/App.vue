@@ -25,7 +25,7 @@ export default {
 
 <style>
 #app {
-  width: 100vw;
+  max-width: 100%;
   overflow: hidden;
 }
 .player {

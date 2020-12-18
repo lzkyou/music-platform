@@ -9,6 +9,7 @@ import { Singer } from './models/singer.model';
 import { Song } from './models/song.model';
 import { SongList } from './models/songlist.model';
 import { User } from './models/user.model';
+import { Comment } from './models/comment.model' 
 
 const models = TypegooseModule.forFeature([
   User,
@@ -18,7 +19,8 @@ const models = TypegooseModule.forFeature([
   Ads,
   SongList,
   Post,
-  Action
+  Action,
+  Comment
 ])
 
 @Global()

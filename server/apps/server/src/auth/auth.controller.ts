@@ -1,10 +1,11 @@
-import { User } from '@libs/db/models/user.model';
+import { User, UserDocument } from '@libs/db/models/user.model';
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
+import { CurrentUser } from './current-user.decorator';
 import { LoginDto } from './dto/login.dto';
 import { RegDto } from './dto/reg.dto';
 
@@ -33,10 +34,10 @@ export class AuthController {
   @Post('login')
   @ApiOperation({ summary: '登录' })
   @UseGuards(AuthGuard('local'))
-  async login(@Body() dto: LoginDto, @Req() req) {
+  async login(@Body() dto: LoginDto, @CurrentUser() user:UserDocument) {
     return {
       token: this.jwtService.sign({
-        id: String(req.user._id)
+        id: String(user._id)
       })
     }
   }
@@ -45,7 +46,7 @@ export class AuthController {
   @ApiOperation({ summary: '获取信息' })
   @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
-  async user(@Req() req) {
-    return req.user
+  async user(@CurrentUser() user: UserDocument) {
+    return user
   }
 }

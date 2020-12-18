@@ -85,18 +85,16 @@
                 />
               </p>
             </div>
+            <!-- 用户操作 -->
             <div
               class="like text-center pb-1 bd-bottom flex ai-center jc-center"
             >
-              <van-icon
-                class="primary fs-sm bd-right"
-                class-prefix="icon"
-                name="1_music89"
-                >点赞</van-icon
-              >
-              <van-icon class="blue fs-sm" class-prefix="icon" name="liaotian"
-                >评论</van-icon
-              >
+              <div class="opt bd-right">
+                <like-btn :object="item._id" :text="'点赞'"></like-btn>
+              </div>
+              <div class="opt">
+                <comment-btn :object="item._id" :text="'评论'"></comment-btn>
+              </div>
             </div>
           </div>
         </div>
@@ -123,9 +121,14 @@
 
 <script>
 import SearchBar from "@/components/common/SearchBar.vue";
+import LikeBtn from "@/components/common/LikeBtn.vue";
+import CommentBtn from "@/components/common/CommentBtn.vue";
+
 export default {
   components: {
     SearchBar,
+    LikeBtn,
+    CommentBtn,
   },
   data() {
     return {
@@ -274,9 +277,12 @@ export default {
 .content-img-wrap::-webkit-scrollbar {
   display: none;
 }
-.like i {
+.like .opt {
   width: 50%;
 }
+/* .like .opt:first-child i{
+  color: black;
+} */
 .van-index-bar__sidebar {
   display: none !important;
 }

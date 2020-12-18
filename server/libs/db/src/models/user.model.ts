@@ -1,7 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { modelOptions, prop, Ref } from "@typegoose/typegoose";
+import { modelOptions, prop, DocumentType } from "@typegoose/typegoose";
 import { hashSync } from "bcryptjs";
 import { Post } from "./post.model";
+
+export type UserDocument = DocumentType<User>
 
 @modelOptions({
   schemaOptions:{

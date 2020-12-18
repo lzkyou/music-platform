@@ -60,7 +60,8 @@
     <van-tabs v-model="active" swipeable animated>
       <van-tab :title="'登录'">
         <div class="reg box flex flex-column w-100 jc-around p-6">
-          <h2 class="mt-0">马上更多精彩！</h2>
+          <h1 class="mt-0 mb-1">登录</h1>
+          <h2 class="mt-0 dark">马上更多精彩！</h2>
           <input
             class="my-1 bd-border lh-6 pl-2"
             v-model="login.username"
@@ -83,7 +84,8 @@
       </van-tab>
       <van-tab :title="'注册'">
         <div class="reg box flex flex-column w-100 jc-around p-6">
-          <h2 class="mt-0">马上更多精彩！</h2>
+          <h1 class="mt-0 mb-1">注册</h1>
+          <h2 class="mt-0 dark">马上更多精彩！</h2>
           <input
             class="my-1 bd-border lh-6 pl-2"
             v-model="reg.username"
@@ -138,16 +140,32 @@ export default {
       }
     },
     async loginAccount() {
-      const res = await this.$http.post("auth/login", this.login);
-      localStorage.token = res.data.token;
-      const user = await this.$http.get("auth/user");
-      this.$store.state.user = user.data;
-      localStorage.setItem("loginUser", JSON.stringify(user.data));
-      location.reload();
+      try {
+        const res = await this.$http.post("auth/login", this.login);
+        localStorage.token = res.data.token;
+        const user = await this.$http.get("auth/user");
+        this.$store.state.user = user.data;
+        localStorage.setItem("loginUser", JSON.stringify(user.data));
+        this.$notify({
+          type: "success",
+          message: "登录成功",
+        });
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
+      } catch {
+        this.$notify("用户名或密码错误");
+      }
     },
     logout() {
-      localStorage.clear();
-      location.reload();
+      this.$notify({
+        type: "danger",
+        message: "正在退出",
+      });
+      setTimeout(() => {
+        localStorage.clear();
+        location.reload();
+      }, 1500);
     },
   },
   created() {
