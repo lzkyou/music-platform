@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'HomeTitle',
+  name: 'HomeSectionTitle',
   props:{
     title:{
       type: String

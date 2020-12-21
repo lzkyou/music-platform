@@ -79,7 +79,7 @@ export default {
         },
       });
       this.commentList = res.data;
-      console.log(res.data);
+      // console.log(res.data);
     },
     async sendComment() {
       const res = await this.$http.post("comments", {

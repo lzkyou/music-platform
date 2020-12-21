@@ -2,11 +2,13 @@
   <div class="home">
     <!-- 主页头部 -->
     <search-bar></search-bar>
+    <!-- 轮播 -->
     <van-swipe class="home-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item v-for="(image, index) in banner" :key="index">
         <img :src="image" />
       </van-swipe-item>
     </van-swipe>
+    <!-- 导航 -->
     <van-grid :border="false" icon-size="2rem" :column-num="5">
       <van-grid-item
         class="nav-item"
@@ -18,46 +20,18 @@
       />
     </van-grid>
     <!-- 主页主体 -->
-    <div class="recommend">
-      <home-title :title="'E·臣 | 精选歌单'"></home-title>
-      <div class="song-sheet flex m-2 flex-nw">
-        <router-link
-          tag="a"
-          :to="`songsheets/desc/${item._id}`"
-          v-for="item in songSheets"
-          :key="item.index"
-        >
-          <img :src="item.cover" />
-          <span class="w-100 text-dark text-left fs-sm">{{ item.name }}</span>
-        </router-link>
-      </div>
-    </div>
-    <div class="album">
-      <home-title :title="'E·臣 | 精选专辑'"></home-title>
-      <div class="album-item flex m-2 flex-w jc-around">
-        <router-link
-          tag="a"
-          :to="`albums/desc/${item._id}`"
-          v-for="item in albums"
-          :key="item.index"
-        >
-          <img class="w-100 shadow" :src="item.cover" />
-          <span class="text-dark">{{ item.name }}</span>
-        </router-link>
-      </div>
-    </div>
+    <home-main></home-main>
   </div>
 </template>
 
 <script>
 import SearchBar from "@/components/common/SearchBar.vue";
-
-import HomeTitle from "./Comps/HomeTitle.vue";
+import HomeMain from "./Comps/HomeMain"
 
 export default {
   components: {
     SearchBar,
-    HomeTitle,
+    HomeMain,
   },
   data() {
     return {
@@ -69,8 +43,7 @@ export default {
         { icon: "diantai", desc: "电台" },
         { icon: "caidan", desc: "分类" },
       ],
-      songSheets: {},
-      albums: {}
+      
     };
   },
   methods: {
@@ -84,21 +57,9 @@ export default {
       this.banner = res.data.data[0].items.map((v) => v.value);
       // console.log(this.banner);
     },
-    async fetchSongSheets() {
-      const res = await this.$http.get("songlist");
-      this.songSheets = res.data.data;
-      // console.log(this.songSheet);
-    },
-    async fetchAlbums(){
-      const res = await this.$http.get("albums");
-      this.albums = res.data.data;
-      // console.log(this.albums);
-    }
   },
   created() {
     this.fetchBanner();
-    this.fetchSongSheets();
-    this.fetchAlbums();
   },
   
 };
@@ -118,36 +79,5 @@ export default {
 }
 .van-grid-item__content {
   background-color: transparent !important;
-}
-.song-sheet {
-  overflow: hidden;
-  overflow-x: auto;
-}
-.song-sheet::-webkit-scrollbar {
-  display: none;
-}
-.song-sheet a {
-  padding-right: 0.4375rem;
-}
-.song-sheet a img {
-  width: 6.875rem;
-  height: 6.7rem;
-  border-radius: 10px;
-  object-fit: cover;
-}
-.song-sheet a span {
-  display: inline-block;
-}
-.album-item a{
-  display: block;
-  width: 48%;
-  text-align: center;
-}
-.album-item a img{
-  border-radius: 0.3125rem;
-}
-.album-item a span {
-  line-height: 1.8rem;
-  font-size: 0.9375rem;
 }
 </style>

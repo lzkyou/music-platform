@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import TabBar from './components//common/TabBar.vue'
 import Home from './views/Home/Home.vue'
-import Discover from './views/Discover.vue'
+import Discover from './views/Discover/Discover.vue'
 import Chat from './views/Chat.vue'
 import Profile from './views/Profile.vue'
 
