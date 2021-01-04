@@ -39,10 +39,11 @@
         center
         show-word-limit
         type="textarea"
-        placeholder="输入信息"
+        :placeholder="placeholder"
+        :disabled="isLogin"
       >
         <template #button>
-          <van-button size="small" type="primary" @click="sendComment()"
+          <van-button :disabled="isLogin" size="small" type="primary" @click="sendComment()"
             >发送</van-button
           >
         </template>
@@ -67,6 +68,8 @@ export default {
       show: false,
       comment: "",
       commentList: [],
+      isLogin: false,
+      placeholder: '请输入信息'
     };
   },
   methods: {
@@ -90,6 +93,12 @@ export default {
       this.showComment();
       this.comment = ''
     },
+  },
+  created() {
+    if(!localStorage.token){
+      this.isLogin = true
+      this.placeholder="请先登录"
+    }
   },
 };
 </script>

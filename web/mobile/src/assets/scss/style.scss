@@ -68,6 +68,15 @@ a {
   flex: 1;
 }
 
+//else
+.lg-newsong{
+  background-image: linear-gradient(to right, #ed4264 , #ffedbc );
+}
+
+.f-normal{
+  font-weight: normal;
+}
+
 @each $colorKey, $color in $colors {
   .#{$colorKey}{
     color: $color;

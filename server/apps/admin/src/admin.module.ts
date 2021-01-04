@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { AdsModule } from './ads/ads.module';
 import { SonglistModule } from './songlist/songlist.module';
 import { PostsModule } from './posts/posts.module';
+import { RadioModule } from './radios/radios.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { PostsModule } from './posts/posts.module';
     AuthModule,
     AdsModule,
     SonglistModule,
-    PostsModule
+    PostsModule,
+    RadioModule
   ],
   controllers: [AdminController],
   providers: [AdminService],

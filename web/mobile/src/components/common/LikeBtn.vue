@@ -29,27 +29,32 @@ export default {
   },
   methods: {
     async getStatus() {
-      const res = await this.$http.get("actions/status", {
-        params: {
+      if (localStorage.token) {
+        const res = await this.$http.get("actions/status", {
+          params: {
+            type: "Post",
+            object: this.object,
+            name: "like",
+          },
+        });
+        this.status = res.data.status;
+      }
+    },
+    async toggle() {
+      if (!localStorage.token) {
+        this.$toast.fail("请先登录！");
+      } else {
+        const res = await this.$http.post("actions/toggle", {
           type: "Post",
           object: this.object,
           name: "like",
-        },
-      });
-      this.status = res.data.status;
-    },
-    async toggle() {
-      const res = await this.$http.post("actions/toggle", {
-        type: "Post",
-        object: this.object,
-        name: "like",
-      });
-      this.status = res.data.status;
-      if(this.status===true){
-        this.$toast.success('已点赞！')
-      }
-      else{
-        this.$toast.fail('已取消！')
+        });
+        this.status = res.data.status;
+        if (this.status === true) {
+          this.$toast.success("已点赞！");
+        } else {
+          this.$toast.fail("已取消！");
+        }
       }
     },
   },

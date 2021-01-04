@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="recommend">
-      <home-section-title :title="'E·臣 | 推荐歌单'"></home-section-title>
+      <section-title :title="'E·臣 | 推荐歌单'"></section-title>
       <div class="song-sheet flex m-2 flex-nw">
         <router-link
           tag="a"
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="album">
-      <home-section-title :title="'E·臣 | 精选专辑'"></home-section-title>
+      <section-title :title="'E·臣 | 精选专辑'"></section-title>
       <div class="album-item flex m-2 flex-w jc-around">
         <router-link
           tag="a"
@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import HomeSectionTitle from "./HomeSectionTitle";
+import SectionTitle from "@/components/content/SectionTitle";
 export default {
   name: "HomeMain",
   components: {
-    HomeSectionTitle,
+    SectionTitle,
   },
   data() {
     return {

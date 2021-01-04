@@ -10,6 +10,7 @@ import { Song } from './models/song.model';
 import { SongList } from './models/songlist.model';
 import { User } from './models/user.model';
 import { Comment } from './models/comment.model' 
+import { Radio } from './models/radio.model';
 
 const models = TypegooseModule.forFeature([
   User,
@@ -20,7 +21,8 @@ const models = TypegooseModule.forFeature([
   SongList,
   Post,
   Action,
-  Comment
+  Comment,
+  Radio
 ])
 
 @Global()

@@ -9,14 +9,17 @@
       </van-swipe-item>
     </van-swipe>
     <!-- 导航 -->
-    <van-grid :border="false" icon-size="2rem" :column-num="5">
+    <van-grid :border="false" icon-size="2rem">
       <van-grid-item
         class="nav-item"
         v-for="item in navItem"
         :key="item.index"
         :icon="item.icon"
         icon-prefix="icon"
-        :text="item.desc"
+        :text="item.name"
+        :to="item.path"
+        v-show="item.show"
+        
       />
     </van-grid>
     <!-- 主页主体 -->
@@ -37,11 +40,11 @@ export default {
     return {
       banner: {},
       navItem: [
-        { icon: "1_music93", desc: "新歌" },
-        { icon: "1_music80", desc: "私人FM" },
-        { icon: "changpian", desc: "专辑" },
-        { icon: "diantai", desc: "电台" },
-        { icon: "caidan", desc: "分类" },
+        { icon: "1_music93", name: "新歌", path: '/newsongs/desc/list', show: true },
+        { icon: "1_music80", name: "私人FM", path: `/pfm/desc/${this.$store.state.user._id}`, show: this.$store.state.user },
+        { icon: "changpian", name: "专辑", path: '/albums', show: true },
+        { icon: "diantai", name: "电台", path: '/radios/', show: true },
+        { icon: "caidan", name: "更多", path: '/', show: true },
       ],
       
     };
@@ -50,7 +53,7 @@ export default {
     async fetchBanner() {
       const res = await this.$http.get(`ads`, {
         params: {
-          query: { where: { name: "banner" } },
+          query: { where: { name: "home" } },
         },
       });
       //获取banner图片
@@ -70,9 +73,12 @@ export default {
   padding-bottom: 110px;
 }
 .home-swipe img {
-  height: 30vh;
+  height: 28vh;
   width: 100vw;
   object-fit: cover;
+}
+.nav-item{
+  flex: 1 !important;
 }
 .nav-item i {
   color: #c42a2a;

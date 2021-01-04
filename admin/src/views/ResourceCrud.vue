@@ -68,11 +68,13 @@ export default {
     },
     //更新数据
     async update(row, index, done) {
-      //avue会在数据中添加$index字段确保唯一性，但会导致数据入库失败，所以格式化数据
+      //avue会在数据中添加某些字段确保唯一性，例如：$index
+      //但会导致数据入库失败，所以格式化数据
       const res = JSON.parse(JSON.stringify(row));
       delete res.$index;
       delete res.$belong;
       delete res.$permission;
+      delete res.$creator;
       await this.$http.put(`${this.resource}/${row._id}`, res);
       this.$message.success("修改成功！");
       this.fetch();

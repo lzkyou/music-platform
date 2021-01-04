@@ -11,9 +11,10 @@
   />
 </template>
 
+
 <script>
 export default {
-  name: 'Player'
+  name: "Player",
 };
 </script>
 

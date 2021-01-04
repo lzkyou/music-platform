@@ -2,7 +2,7 @@
   <div class="vh-100">
     <van-nav-bar
       :fixed="true"
-      :title="getType === 'songsheets' ? '歌单' : '专辑'"
+      :title="getType"
       left-arrow
       left-text="返回"
       @click-left="$router.go(-1)"
@@ -12,7 +12,10 @@
         class="desc-bg"
         :style="{ background: `url(${content.cover}) no-repeat center` }"
       ></div>
-      <div class="desc-stuff vw-100 flex box px-2">
+      <div
+        v-if="getType === '专辑' || getType === '歌单'"
+        class="desc-stuff vw-100 flex box px-2"
+      >
         <img :src="content.cover" />
         <div class="desc-context pl-3 flex flex-column jc-between context">
           <div class="desc-title">{{ content.name }}</div>
@@ -20,6 +23,15 @@
           <p><span>发布时间：2020/12/12</span></p>
           <p><span>简介：暂无</span></p>
         </div>
+      </div>
+      <div v-else class="desc-stuff lg-newsong vw-100 h-100 flex flex-column">
+        <h1 class="w-100 m-0 text-center white">
+          {{ this.dayjs().format("MM 月") }}
+        </h1>
+        <h1 class="w-100 mt-1 text-center white">
+          {{ this.dayjs().format("DD 日") }}
+        </h1>
+        <h2 class="w-100 mt-0 text-center border">{{ `每日 ${getType} 速递` }}</h2>
       </div>
     </div>
     <div class="list-wrap bg-white px-2">
@@ -42,7 +54,10 @@
           <div class="p-item-song flex-column flex-1">
             <div class="p-i-song-title">{{ item.name }}</div>
             <div class="p-i-song-desc fs-xs text-grey">
-              陈奕迅 - {{ getType === 'songsheets' ? item.belongTo[0].name : content.name }}
+              陈奕迅 -
+              {{
+                getType === "songsheets" ? item.belongTo[0].name : content.name
+              }}
             </div>
           </div>
           <van-icon class="grey" class-prefix="icon" name="shipin"></van-icon>
@@ -65,7 +80,20 @@ export default {
   },
   computed: {
     getType() {
-      return this.$route.path.split("/")[1];
+      switch (this.$route.path.split("/")[1]) {
+        case "songsheets":
+          return "歌单";
+          break;
+        case "albums":
+          return "专辑";
+          break;
+        case "newsongs":
+          return "新歌";
+          break;
+        case "pfm":
+          return "私人FM";
+          break;
+      }
     },
   },
   methods: {
@@ -76,6 +104,7 @@ export default {
         },
       });
       this.songsheet = randomList.data;
+      // console.log(this.songsheet);
     },
     async fetchSongSheet() {
       const res = await this.$http.get(`songlist/${this.id}`);
@@ -91,26 +120,34 @@ export default {
         },
       });
       this.content = res.data;
-      this.songsheet = res.data.songs
+      this.songsheet = res.data.songs;
       // console.log(this.songsheet);
     },
     play(desc) {
       this.$store.state.src = desc.song;
       this.$store.state.title = desc.name;
       this.$store.state.artist = "陈奕迅";
-      if(this.getType){
-        this.$store.state.pic = (this.getType === 'songsheets' ? desc.belongTo[0].cover : this.content.cover);
-      }
-      else{
+      if (this.getType === "专辑") {
+        this.$store.state.pic = this.content.cover;
+      } else {
         this.$store.state.pic = desc.belongTo[0].cover;
       }
     },
   },
   created() {
-    if (this.getType === "songsheets") {
-      this.fetchSongSheet();
-    } else {
-      this.fetchAlbums();
+    switch (this.getType) {
+      case "歌单":
+        this.fetchSongSheet();
+        break;
+      case "专辑":
+        this.fetchAlbums();
+        break;
+      case "新歌":
+        this.getRandomSongs();
+        break;
+      case "私人FM":
+        this.getRandomSongs();
+        break;
     }
   },
 };

@@ -57,6 +57,7 @@ export default {
               { title: "用户管理", path: "/users/list" },
               { title: "广告管理", path: "/ads/list" },
               { title: "动态管理", path: "/posts/list" },
+              { title: "电台管理", path: "/radios/list" },
             ],
           },
         ],

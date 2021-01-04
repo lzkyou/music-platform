@@ -12,9 +12,10 @@ import { EventsGateway } from './events.gateway';
 import { AuthModule } from './auth/auth.module';
 import { ActionsModule } from './actions/actions.module';
 import { CommentsModule } from './comments/comments.module';
+import { RadiosModule } from './radios/radios.module';
 
 @Module({
-  imports: [DbModule,AdsModule, SonglistModule, AlbumsModule, SongsModule, SingersModule, PostsModule, AuthModule, ActionsModule, CommentsModule],
+  imports: [DbModule,AdsModule, SonglistModule, AlbumsModule, SongsModule, SingersModule, PostsModule, AuthModule, ActionsModule, CommentsModule, RadiosModule],
   controllers: [AppController],
   providers: [AppService, EventsGateway],
 })
