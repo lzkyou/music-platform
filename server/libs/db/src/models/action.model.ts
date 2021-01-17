@@ -18,6 +18,6 @@ export class Action {
   @prop({ refPath: 'type' })
   object: Ref<Post | Song>
 
-  @prop({ enum: ['like', 'favor'] })
+  @prop({ enum: ['like', 'collect'] })
   name: string
 }

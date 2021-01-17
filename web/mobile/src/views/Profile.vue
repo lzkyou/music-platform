@@ -1,8 +1,8 @@
 <template>
   <div v-if="isShowLogin">
-    <van-nav-bar :fixed="true" :title="`我的`" />
-    <div class="user-wrap p-3">
-      <div class="user mt-6 mb-2">
+    <search-bar />
+    <div class="user-wrap px-3">
+      <div class="user mt-4 mb-2">
         <div class="topline flex ai-center shadow bg-white py-2 px-3 my-3">
           <img :src="this.$store.state.user.topic" />
           <div>
@@ -117,7 +117,12 @@
 </template>
 
 <script>
+import SearchBar from "@/components/common/SearchBar";
+
 export default {
+  components: {
+    SearchBar,
+  },
   data() {
     return {
       active: 0,

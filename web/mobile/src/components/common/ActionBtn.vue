@@ -3,7 +3,7 @@
     <van-icon
       class="fs-xl"
       class-prefix="icon"
-      name="1_music89"
+      :name="iconName"
       :color="status ? '#c42a2a' : '#000'"
     ></van-icon>
     <span>{{ text }}</span>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "LikeBtn",
+  name: "ActionBtn",
   props: {
     object: {
       type: String,
@@ -21,6 +21,14 @@ export default {
     text: {
       type: String,
     },
+    name:{
+      type: String,
+      required: true,
+    },
+    iconName:{
+      type: String,
+      default: '1_music89'
+    }
   },
   data() {
     return {
@@ -34,7 +42,7 @@ export default {
           params: {
             type: "Post",
             object: this.object,
-            name: "like",
+            name: this.name,
           },
         });
         this.status = res.data.status;
@@ -47,11 +55,11 @@ export default {
         const res = await this.$http.post("actions/toggle", {
           type: "Post",
           object: this.object,
-          name: "like",
+          name: this.name,
         });
         this.status = res.data.status;
         if (this.status === true) {
-          this.$toast.success("已点赞！");
+          this.$toast.success(this.name=='like'?"已点赞！":'已收藏！');
         } else {
           this.$toast.fail("已取消！");
         }

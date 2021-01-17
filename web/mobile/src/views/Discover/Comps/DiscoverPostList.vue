@@ -21,11 +21,14 @@
       </div>
       <!-- 用户操作 -->
       <div class="like text-center pb-1 bd-bottom flex ai-center jc-center">
-        <div class="opt bd-right">
-          <like-btn :object="item._id" :text="'点赞'"></like-btn>
+        <div class="flex-1 bd-right">
+          <action-btn :object="item._id" :name="'like'" :text="'点赞'"></action-btn>
         </div>
-        <div class="opt">
+        <div class="flex-1 bd-right">
           <comment-btn :object="item._id" :text="'评论'"></comment-btn>
+        </div>
+        <div style="width: 30px;" class="pl-1">
+          <action-btn :object="item._id" :name="'collect'" :icon-name="'yigouxiangmu'"></action-btn>
         </div>
       </div>
     </div>
@@ -33,12 +36,12 @@
 </template>
 
 <script>
-import LikeBtn from "@/components/common/LikeBtn.vue";
+import ActionBtn from "@/components/common/ActionBtn.vue";
 import CommentBtn from "@/components/common/CommentBtn";
 export default {
   name: "DiscoverPostList",
   components: {
-    LikeBtn,
+    ActionBtn,
     CommentBtn,
   },
   props:{
@@ -66,6 +69,6 @@ export default {
   display: none;
 }
 .like .opt {
-  width: 50%;
+  /* width: 50%; */
 }
 </style>

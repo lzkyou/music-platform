@@ -20,8 +20,6 @@
 
 <script>
 import SearchBar from "@/components/common/SearchBar.vue";
-import LikeBtn from "@/components/common/LikeBtn.vue";
-import CommentBtn from "@/components/common/CommentBtn.vue";
 
 import DiscoverSinger from "./Comps/DiscoverSinger"
 import DiscoverLikelySong from "./Comps/DiscoverLikelySong"
@@ -31,8 +29,6 @@ import DiscoverSongList from './Comps/DiscoverSongList'
 export default {
   components: {
     SearchBar,
-    LikeBtn,
-    CommentBtn,
     DiscoverSinger,
     DiscoverLikelySong,
     DiscoverPost,
