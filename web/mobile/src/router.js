@@ -4,11 +4,13 @@ import TabBar from './components//common/TabBar.vue'
 import Home from './views/Home/Home.vue'
 import Discover from './views/Discover/Discover.vue'
 import Chat from './views/Chat.vue'
-import Profile from './views/Profile.vue'
+import Profile from './views/Profile/Profile.vue'
 import Album from './views/Album.vue'
 import Radio from './views/Radio/Radio.vue'
 
+
 import Desc from './components/content/Desc.vue'
+import Search from './components/content/Search.vue'
 
 Vue.use(Router)
 
@@ -28,5 +30,6 @@ export default new Router({
       ]
     },
     { path: '/:res/desc/:id', name: 'desc', component: Desc, props: true },
+    { path: '/search/:type/:field', name: 'search', component: Search, props: true },
   ]
 })

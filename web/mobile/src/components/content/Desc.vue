@@ -64,7 +64,7 @@
               {{ getType == "专辑" ? content.name : item.belongTo[0].name }}
             </div>
           </div>
-          <van-icon class="grey" class-prefix="icon" name="shipin"></van-icon>
+          <action-btn :object="item._id" :name="'like'" :type="'Song'"/>
         </div>
       </div>
     </div>
@@ -72,7 +72,12 @@
 </template>
 
 <script>
+import ActionBtn from '@/components/common/ActionBtn'
+
 export default {
+  components:{
+    ActionBtn
+  },
   props: {
     id: String,
   },
@@ -87,19 +92,14 @@ export default {
       switch (this.$route.path.split("/")[1]) {
         case "songsheets":
           return "歌单";
-          break;
         case "albums":
           return "专辑";
-          break;
         case "newsongs":
           return "新歌";
-          break;
         case "pfm":
           return "私人FM";
-          break;
         case "radios":
           return "电台";
-          break;
       }
     },
   },
@@ -149,6 +149,7 @@ export default {
       } else {
         this.$store.state.pic = desc.belongTo[0].cover;
       }
+      // console.log(desc);
     },
   },
   created() {

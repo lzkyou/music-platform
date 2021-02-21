@@ -2,16 +2,23 @@
   <van-search
     v-model="searchField"
     shape="round"
-    placeholder="搜索"
+    :placeholder="placeholder"
     input-align="center"
     maxlength="28"
-    @search="search"
+    @search="search()"
   />
 </template>
 
 <script>
 export default {
   name: "SearchBar",
+  props:{
+    types: String,
+    placeholder:{
+      type: String,
+      default: '搜索'
+    }
+  },
   data() {
     return {
       searchField: null,
@@ -19,7 +26,12 @@ export default {
   },
   methods: {
     search() {
-      console.log(this.searchField);
+      if(this.types=='profile'){
+        this.$router.push(`/search/users/${this.searchField}`)
+      }
+      else{
+        this.$router.push(`/search/songs/${this.searchField}`)
+      }
     },
   },
 };

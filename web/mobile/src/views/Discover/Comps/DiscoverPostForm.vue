@@ -78,6 +78,7 @@ export default {
           this.newPost.poster = "";
           this.fileList = [];
           this.$parent.fetchPosts();
+          this.$router.go(0)
         }
       }
     },

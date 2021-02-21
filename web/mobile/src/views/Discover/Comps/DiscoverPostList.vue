@@ -68,7 +68,4 @@ export default {
 .content-img-wrap::-webkit-scrollbar {
   display: none;
 }
-.like .opt {
-  /* width: 50%; */
-}
 </style>

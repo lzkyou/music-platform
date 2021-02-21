@@ -13,13 +13,18 @@
         {{ singer.name }} - {{ likelySong.belongTo[0].name }}
       </div>
     </div>
-    <van-icon class="grey" class-prefix="icon" name="shipin"></van-icon>
+    <action-btn :object="likelySong._id" :type="'Song'" :name="'like'" />
   </div>
 </template>
 
 <script>
+import ActionBtn from "@/components/common/ActionBtn"
+
 export default {
   name: "DiscoverLikelySong",
+  components:{
+    ActionBtn
+  },
   props: {
     likelySong: {
       type: Object,
@@ -30,7 +35,7 @@ export default {
   },
   methods: {
     play(desc) {
-      console.log(desc);
+      // console.log(desc);
       this.$store.state.src = desc.song;
       this.$store.state.title = desc.name;
       this.$store.state.artist = "陈奕迅";

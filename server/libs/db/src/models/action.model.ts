@@ -12,12 +12,12 @@ export class Action {
   @prop({ ref: 'User' })
   user: Ref<User>
 
-  @prop({ enum: ['Post', 'Song'] })
+  @prop({ enum: ['Post', 'Song', 'User'] })
   type: string
 
   @prop({ refPath: 'type' })
-  object: Ref<Post | Song>
+  object: Ref<Post | Song | User>
 
-  @prop({ enum: ['like', 'collect'] })
+  @prop({ enum: ['like', 'collect','follow'] })
   name: string
 }

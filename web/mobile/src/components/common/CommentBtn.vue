@@ -81,6 +81,22 @@ export default {
           query: { populate: "user" },
         },
       });
+      try {
+        for (let item of res.data) {
+          item.createdAt = this.dayjs(
+            item.createdAt
+              .split("T")
+              .map((item) => {
+                return item.split(".").shift();
+              })
+              .join(" ")
+          )
+            .add(8, "hour")
+            .format("YYYY-MM-DD HH:mm:ss");
+        }
+      } catch {
+        //dayjs诡异报错捕获
+      }
       this.commentList = res.data;
       // console.log(res.data);
     },
@@ -118,6 +134,6 @@ export default {
 }
 .comment-wrap {
   margin-top: 55px;
-  /* padding-bottom: 190px; */
+  padding-bottom: 85px;
 }
 </style>

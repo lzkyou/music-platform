@@ -1,5 +1,6 @@
 <template>
   <aplayer
+    :float="true"
     :volume="0.1"
     class="player"
     :music="{
@@ -19,4 +20,7 @@ export default {
 </script>
 
 <style>
+.player .aplayer-body .aplayer-pic{
+  background-color: rgba(63, 187, 131, 0.068) !important;
+}
 </style>

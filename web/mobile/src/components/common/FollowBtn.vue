@@ -1,38 +1,21 @@
 <template>
-  <div @click="toggle()">
-    <van-icon
-      class="fs-xl"
-      class-prefix="icon"
-      :name="iconName"
-      :color="status ? '#c42a2a' : '#000'"
-    ></van-icon>
-    <span>{{ text }}</span>
+  <div
+    @click="toggle()"
+    class="follow-btn w-100 text-center mt-3 py-1"
+    :class="status ? 'bg-grey span' : 'bg-l-primary white'"
+  >
+    {{ status ? "已关注" : "关注" }}
   </div>
 </template>
 
 <script>
 export default {
-  name: "ActionBtn",
+  name: "FollowBtn",
   props: {
     object: {
       type: String,
-      // required: true,
-    },
-    type: {
-      type: String,
-      default: 'Post'
-    },
-    text: {
-      type: String,
-    },
-    name:{
-      type: String,
       required: true,
     },
-    iconName:{
-      type: String,
-      default: '1_music89'
-    }
   },
   data() {
     return {
@@ -44,9 +27,9 @@ export default {
       if (localStorage.token) {
         const res = await this.$http.get("actions/status", {
           params: {
-            type: this.type,
+            type: "User",
             object: this.object,
-            name: this.name,
+            name: "follow",
           },
         });
         this.status = res.data.status;
@@ -57,16 +40,16 @@ export default {
         this.$toast.fail("请先登录！");
       } else {
         const res = await this.$http.post("actions/toggle", {
-          type: this.type,
+          type: "User",
           object: this.object,
-          name: this.name,
+          name: "follow",
         });
         this.status = res.data.status;
-        if (this.status === true) {
-          this.$toast.success(this.name=='like'?"已喜爱！":'已收藏！');
-        } else {
-          this.$toast.fail("已取消！");
-        }
+        // if (this.status === true) {
+        //   this.status=='已关注'
+        // } else {
+        //   this.status=='关注'
+        // }
       }
     },
   },

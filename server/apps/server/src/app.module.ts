@@ -13,10 +13,11 @@ import { AuthModule } from './auth/auth.module';
 import { ActionsModule } from './actions/actions.module';
 import { CommentsModule } from './comments/comments.module';
 import { RadiosModule } from './radios/radios.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [DbModule,AdsModule, SonglistModule, AlbumsModule, SongsModule, SingersModule, PostsModule, AuthModule, ActionsModule, CommentsModule, RadiosModule],
+  imports: [DbModule, AdsModule, SonglistModule, AlbumsModule, SongsModule, SingersModule, PostsModule, AuthModule, ActionsModule, CommentsModule, RadiosModule, UsersModule],
   controllers: [AppController],
   providers: [AppService, EventsGateway],
 })
-export class AppModule {}
+export class AppModule { }

@@ -41,7 +41,7 @@ export default {
       banner: {},
       navItem: [
         { icon: "1_music93", name: "新歌", path: '/newsongs/desc/list', show: true },
-        { icon: "1_music80", name: "私人FM", path: `/pfm/desc/${this.$store.state.user._id}`, show: this.$store.state.user },
+        // { icon: "1_music80", name: "私人FM", path: `/pfm/desc/${this.$store.state.user._id}`, show: this.$store.state.user },
         { icon: "changpian", name: "专辑", path: '/albums', show: true },
         { icon: "diantai", name: "电台", path: '/radios/', show: true },
         { icon: "caidan", name: "更多", path: '/', show: true },
@@ -60,11 +60,16 @@ export default {
       this.banner = res.data.data[0].items.map((v) => v.value);
       // console.log(this.banner);
     },
+    isLogin(){
+    if(this.$store.state.user){
+        this.navItem.splice(1,0,{ icon: "1_music80", name: "私人FM", path: `/pfm/desc/${this.$store.state.user._id}`, show: this.$store.state.user })
+      } 
+    }
   },
   created() {
     this.fetchBanner();
+    this.isLogin();
   },
-  
 };
 </script>
 

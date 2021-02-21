@@ -84,13 +84,15 @@ export default {
     async search(params, done) {
       console.log(params);
       for (let key in params) {
+        // console.log(this.options.column);
         const field = this.options.column.map((col) => col.prop === key);
-        if (field.reg) {
+        if (field) {
+          console.log(1);
           params[key] = { $regex: params[key] };
         }
       }
       this.query.where = params;
-      // console.log(this.query);
+      console.log(this.query);
       done();
       this.fetch();
     },
